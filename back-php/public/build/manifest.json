@@ -3,11 +3,8 @@
   "build/app.js": "http://localhost:8080/build/app.js",
   "build/runtime.js": "http://localhost:8080/build/runtime.js",
   "build/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_0_0_0_0_port_-63f5df.js": "http://localhost:8080/build/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_0_0_0_0_port_-63f5df.js",
-  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-0abcb3.css": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-0abcb3.css",
-  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-0abcb3.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-0abcb3.js",
-  "build/images/logo-wild-code-school.svg": "http://localhost:8080/build/images/logo-wild-code-school.148bd128.svg",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-autocomple-acc701.css": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-autocomple-acc701.css",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-autocomple-acc701.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-autocomple-acc701.js",
   "build/images/logo_ConsumerPrediction.png": "http://localhost:8080/build/images/logo_ConsumerPrediction.e066bb05.png",
-  "build/app.png": "http://localhost:8080/build/images/logo_ConsumerPrediction.e066bb05.png",
-  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-802647.css": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-802647.css",
-  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-802647.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-802647.js"
+  "build/images/logo-wild-code-school.svg": "http://localhost:8080/build/images/logo-wild-code-school.148bd128.svg"
 }
