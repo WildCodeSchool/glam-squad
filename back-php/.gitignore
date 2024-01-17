@@ -7,3 +7,4 @@
 db.php
 .idea
 .vscode
+.env.local
