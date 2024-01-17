@@ -1,0 +1,9 @@
+/var/
+/vendor/
+/temp/*
+/node_modules
+.phpcs-cache
+*.cache
+db.php
+.idea
+.vscode

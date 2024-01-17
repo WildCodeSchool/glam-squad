@@ -1,0 +1,92 @@
+version: "3.4"
+
+services:
+  js:
+    build:
+      context: ./js
+    depends_on:
+      database:
+        condition: service_healthy
+    volumes:
+      - ./js:/srv/app
+    tty: true
+    ports:
+      # HTTP
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3310
+        published: 3310
+        protocol: tcp
+    environment:
+      APP_PORT: 3310
+      APP_SECRET: 123456789
+      DB_HOST: ${DATABASE_SUBDOMAIN_NAME:-database}
+      DB_PORT: 3306
+      DB_USER: ${MYSQL_USER:-root}
+      DB_PASSWORD: ${USER_PASSWORD:-!ChangeMe!}
+      DB_NAME: ${DB_NAME:-bordeaux_hackaton}
+
+  back-php:
+    build:
+      context: ./back-php
+      target: phpserver
+    depends_on:
+      database:
+        condition: service_healthy
+    restart: unless-stopped
+    tty: true
+    environment:
+      DATABASE_URL: mysql://${MYSQL_USER:-user}:${MYSQL_ROOT_PASSWORD:-password}@database:3306/${MYSQL_DATABASE:-bordeaux_hackaton}?serverVersion=${MYSQL_VERSION:-8.0.3}&charset=${MYSQL_CHARSET:-utf8mb4}
+      DB_USER: ${USER_NAME:-root}
+      DB_PASSWORD: ${USER_PASSWORD:-!ChangeMe!}
+      DB_HOST: ${DATABASE_SUBDOMAIN_NAME:-database}
+      DB_NAME: ${DB_NAME:-bordeaux_hackaton}
+    volumes:
+        - ./back-php:/var/www
+    ports:
+      # HTTP
+      - target: 80
+        published: 8000
+        protocol: tcp
+
+  data-python:
+    build:
+      context: ./data-python
+    depends_on:
+      database:
+        condition: service_healthy
+    volumes:
+      - ./data-python:/app
+    tty: true
+    ports:
+      # HTTP
+      - target: 8501
+        published: 8501
+        protocol: tcp
+
+  database:
+    image: mysql
+    ports:
+      - target: 3306
+        published: 3306
+        protocol: tcp
+    restart: always
+    environment:
+      - MYSQL_DATABASE=bordeaux_hackaton
+      - MYSQL_ROOT_PASSWORD=!ChangeMe!
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    volumes:
+      - ./database-setup.sh:/docker-entrypoint-initdb.d/setup.sh
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-prootpassword"] # Command to check health.
+      interval: 5s # Interval between health checks.
+      timeout: 5s # Timeout for each health checking.
+      retries: 20 # Hou many times retries.
+      start_period: 10s
+
+volumes:
+  db_data:
+    name: database
