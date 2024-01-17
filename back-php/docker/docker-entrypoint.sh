@@ -1,36 +1,46 @@
 #!/bin/sh
+
+set -e
+
 mkdir -p /var/www/public/uploads
 chmod -R 777 /var/www/public/uploads
 mkdir -p /var/www/var
 chmod -R 777 /var/www/var
 
-set -e
-
-composer install \
-    --ignore-platform-reqs \
-    --no-interaction \
-    --no-plugins \
-    --no-scripts \
-    --prefer-dist
-
-## Symfony configuration
-if [ ${APP_ENV} != "prod" ]; then
-  php bin/console doctrine:database:drop --force --quiet --if-exists --no-interaction
-fi
-php bin/console doctrine:database:create --if-not-exists --quiet --no-interaction
-php bin/console doctrine:migrations:migrate --verbose --no-interaction --allow-no-migration
-if [ ${APP_ENV} != "prod" ]; then
-  php bin/console doctrine:fixtures:load --quiet --no-interaction --no-debug
+if [ -z "$(ls -A 'vendor/' 2>/dev/null)" ]; then
+  composer install --prefer-dist --no-progress --no-interaction
 fi
 
-php bin/console cache:clear
-php bin/console cache:warmup
+if grep -q ^DATABASE_URL= .env; then
+  echo "Waiting for database to be ready..."
+  ATTEMPTS_LEFT_TO_REACH_DATABASE=60
+  until [ $ATTEMPTS_LEFT_TO_REACH_DATABASE -eq 0 ] || DATABASE_ERROR=$(php bin/console dbal:run-sql -q "SELECT 1" 2>&1); do
+    if [ $? -eq 255 ]; then
+      # If the Doctrine command exits with 255, an unrecoverable error occurred
+      ATTEMPTS_LEFT_TO_REACH_DATABASE=0
+      break
+    fi
+    sleep 1
+    ATTEMPTS_LEFT_TO_REACH_DATABASE=$((ATTEMPTS_LEFT_TO_REACH_DATABASE - 1))
+    echo "Still waiting for database to be ready... Or maybe the database is not reachable. $ATTEMPTS_LEFT_TO_REACH_DATABASE attempts left."
+  done
+
+  if [ $ATTEMPTS_LEFT_TO_REACH_DATABASE -eq 0 ]; then
+    echo "The database is not up or not reachable:"
+    echo "$DATABASE_ERROR"
+    exit 1
+  else
+    echo "The database is now ready and reachable"
+  fi
+
+  if [ "$( find ./migrations -iname '*.php' -print -quit )" ]; then
+    php bin/console doctrine:migrations:migrate --no-interaction
+  fi
+fi
 
 # run composer scripts like
 # assets:install public
 # ckeditor:install and so on
-composer update
-composer run post-install-cmd
 
 ## server config
 php-fpm -D &
