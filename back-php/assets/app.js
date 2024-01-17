@@ -11,5 +11,9 @@ import './styles/app.scss';
 
 import logo  from './images/logo_ConsumerPrediction.png';
 
+require('bootstrap');
+
 let html;
 html = `<img src="${logo}" alt="logo">`;
+
+
