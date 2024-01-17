@@ -1,4 +1,4 @@
-name: lint-js
+name: JS Quality
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ on:
       - dev
     paths:
       - js
-      - .github/workflows/**
+      - .github/workflows/lint-js.yml
   push:
     branches:
       - main
@@ -17,11 +17,11 @@ on:
       - dev
     paths:
       - js
-      - .github/workflows/**
+      - .github/workflows/lint-js.yml
 
 jobs:
   lint:
-    name: Run linters
+    name: Run js linters
     runs-on: ubuntu-latest
 
     permissions:
@@ -46,7 +46,9 @@ jobs:
 
       - name: Install package dependencies
         if: steps.cache-nextjob.outputs.cache-hit != 'true'
-        run: cd js && npm install
+        working-directory: ./js
+        run: npm install
 
       - name: Run linters
-        run: cd js && npx lint-staged --diff="origin/${GITHUB_BASE_REF}...origin/${GITHUB_HEAD_REF}"
+        working-directory: ./js
+        run: npx lint-staged --diff="origin/${GITHUB_BASE_REF}...origin/${GITHUB_HEAD_REF}"
