@@ -14,7 +14,7 @@ WORKDIR /srv/app
 
 COPY package.json .
 COPY backend/package.json backend/
-COPY frontend/package.json frontend/el-touncho-mdb-react-ui-kit.tgz frontend/plugins frontend/
+COPY frontend/package.json frontend/mdb-react-ui-kit.tgz frontend/plugins frontend/
 
 RUN npm install
 
