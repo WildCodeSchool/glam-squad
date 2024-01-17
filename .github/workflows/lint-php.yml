@@ -1,0 +1,82 @@
+# This is a basic workflow to help you get started with Actions
+
+name: PHP Quality
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+    pull_request:
+      types: [opened, synchronize, reopened, ready_for_review]
+      branches:
+        - main
+        - develop
+        - dev
+      paths:
+        - back-php
+        - .github/workflows/lint-php.yml
+    push:
+      branches:
+        - main
+        - develop
+        - dev
+      paths:
+        - back-php
+        - .github/workflows/lint-php.yml
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  quality:
+    name: Run php quality steps
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+        with:
+            fetch-depth: 0
+
+      - name: checks_directory
+        run: |
+            if [ -d "./.idea" ]; then echo "Forbidden PHPStorm folder (.idea/) found ! Please, ignore in .gitignore"; exit 2; fi
+            if [ -d "./.vscode" ]; then echo "Forbidden VScode folder (.vscode) found ! Please, ignore in .gitignore"; exit 2; fi
+            if [ $(find ./ -name .DS_Store) ]; then echo "Forbidden MacOS boring file (.DS_Store) found ! Please, ignore in .gitignore"; exit 2; fi
+            if [ -d "./vendor" ]; then echo "Forbidden external libs folder (vendor/) found !"; exit 2; fi
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+
+      - name: Cache dependencies
+        id: cache-nextjob
+        uses: actions/cache@v3
+        with:
+            path: |
+                ./back-php/vendor
+                ./back-php/node_modules
+            key: ${{ runner.os }}-${{ hashFiles('./back-php/(composer|yarn|symfony).lock') }}
+
+      - name: Composer
+        if: steps.cache-nextjob.outputs.cache-hit != 'true'
+        working-directory: ./back-php
+        run: composer install
+
+      - name: Yarn
+        if: steps.cache-nextjob.outputs.cache-hit != 'true'
+        working-directory: ./back-php
+        run: yarn --ignore-engines install
+
+      - name: code_quality
+        working-directory: ./back-php
+        run: |
+          ./vendor/bin/phpcs
+          ./vendor/bin/phpstan analyse src --level 6
+          ./vendor/bin/phpmd src text phpmd.xml
+
+      - name: phpunit
+        working-directory: ./back-php
+        run: bin/phpunit
