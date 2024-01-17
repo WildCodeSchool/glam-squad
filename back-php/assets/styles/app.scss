@@ -1,2 +1,20 @@
-//start coding by removing this file and adding yours ;)
-@import "wcs";
+@import "~bootstrap/scss/bootstrap";
+
+
+.question-text {
+    color: black;
+    font-size: 8px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: 2px;
+    word-wrap: break-word;
+}
+
+.menu-text {
+    color: black;
+    font-size: 30px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: 7.50px;
+    word-wrap: break-word;
+}
