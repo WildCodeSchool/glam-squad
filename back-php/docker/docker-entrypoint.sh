@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 mkdir -p /var/www/public/uploads
 chmod -R 777 /var/www/public/uploads
 mkdir -p /var/www/var
