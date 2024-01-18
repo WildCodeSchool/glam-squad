@@ -8,10 +8,11 @@
   "build/images/logo_ConsumerPrediction.png": "http://localhost:8080/build/images/logo_ConsumerPrediction.e066bb05.png",
   "build/images/logo-wild-code-school.svg": "http://localhost:8080/build/images/logo-wild-code-school.148bd128.svg",
   "build/images/pub.jpg": "http://localhost:8080/build/images/pub.c9cff6b0.jpg",
-  "build/app.jpg": "http://localhost:8080/build/images/pub.c9cff6b0.jpg",
+  "build/app.jpg": "http://localhost:8080/build/images/banner.48c60dbd.jpg",
   "build/images/imagePrediction.png": "http://localhost:8080/build/images/imagePrediction.217d5eae.png",
   "build/app.png": "http://localhost:8080/build/images/gloss.143d546f.png",
   "build/images/DRKadry.png": "http://localhost:8080/build/images/DRKadry.b258c682.png",
   "build/images/makup.png": "http://localhost:8080/build/images/makup.3a31da14.png",
-  "build/images/gloss.png": "http://localhost:8080/build/images/gloss.143d546f.png"
+  "build/images/gloss.png": "http://localhost:8080/build/images/gloss.143d546f.png",
+  "build/images/banner.jpg": "http://localhost:8080/build/images/banner.48c60dbd.jpg"
 }

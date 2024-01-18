@@ -101,10 +101,7 @@ button.btn.btn-outline.div2 {
 .titrePrediction { grid-area: 1 / 1 / 2 / 2; }
 
 .sideByside{
-    //display: flex;
     margin: 8px;
-    //width:100%;
-    //height:200px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -152,6 +149,10 @@ button.btn.btn-outline.div2 {
 
 .DRKadry{
     width: 100%;
+}
+
+.banner{
+    display: none;
 }
 
 .BestSellers{
@@ -209,4 +210,79 @@ button.btn.btn-outline.div2 {
         width: 500px;
         height: 500px;
     }
+
+    .titrePrediction {
+        width: 500px;
+        height: 500px;
+    }
+
+    .litleTitle {
+        font-size: 22px;
+        margin: 0;
+    }
+
+    //.sideByside {
+    //    width: 70%;
+    //    align-items: start;
+    //}
+
+    .staggered{
+        display: flex;
+    }
+
+    .stag1, .stag2, .stag3, .stag4{
+        width: 50%;
+    }
+
+    .gloss {
+        width: 50%;
+    }
+
+    .BestSellers {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .traitVerti{
+        height: 174px;
+        margin-left: 10%;
+    }
+
+    .DRKadry {
+        display: none;
+    }
+
+    .banner{
+        display: block;
+        width: 100%;
+    }
+
+    .makup {
+        display: none;
+    }
+
+    .sideByside {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0;
+        grid-row-gap: 0;
+        justify-items: center;
+        align-items: start;
+        height: 1000px;
+    }
+    .prediction {  grid-area: 3 / 1 / 4 / 3; }
+    .mesProduits {
+        grid-area: 1 / 1 / 2 / 3;
+        display: flex;
+    }
+    .ventes {
+        grid-area: 2 / 1 / 3 / 3;
+        display: flex;
+    }
+
+    .traitVerti1{
+        height: 25px;
+    }
+
 }
