@@ -9,6 +9,7 @@ import './bootstrap.js';
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
 
+
 import logo  from './images/logo_ConsumerPrediction.png';
 import pub from './images/pub.jpg';
 import imagePrediction from './images/imagePrediction.png';
