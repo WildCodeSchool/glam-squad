@@ -20,6 +20,7 @@ import DRKadry from './images/DRKadry.png';
 import banner from './images/banner.jpg';
 import makup from './images/makup.png';
 import gloss from './images/gloss.png';
+import makupL from './images/makupL.png';
 
 
 require('bootstrap');
@@ -34,6 +35,7 @@ html = `<img src="${imagePrediction}" alt="image Prediction">`;
 html = `<img src="${DRKadry}" alt="DR Kadry">`;
 html = `<img src="${banner}" alt="banner">`;
 html = `<img src="${makup}" alt="image makup">`;
+html = `<img src="${makupL}" alt="image makupL">`;
 html = `<img src="${gloss}" alt="image gloss">`;
 
 
