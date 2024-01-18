@@ -8,8 +8,7 @@
         "http://localhost:8080/build/app.js"
       ],
       "css": [
-        "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-autocomple-acc701.css",
-        "http://localhost:8080/build/app.css"
+        "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-autocomple-acc701.css"
       ]
     }
   }

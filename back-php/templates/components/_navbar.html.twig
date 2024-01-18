@@ -10,7 +10,7 @@
                         <a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_profile') }}">Profil</a>
+                        <a class="nav-link" href="#">Profil</a>
                     </li>
                     <li class="nav-item">
                     {% if app.user is defined and app.user is not null %}
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-            <img class="w-75 img_navbar" src="{{ asset('build/images/logo_ConsumerPrediction.png')}}" alt="logo" />
+            <img class="img_navbar" src="{{ asset('build/images/logo_ConsumerPrediction.png')}}" alt="logo" />
 
         <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill text-dark" viewBox="0 0 16 16">
