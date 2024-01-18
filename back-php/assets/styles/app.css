@@ -2,3 +2,13 @@ body {
     background-color: lightgray;
 }
 
+.img_navbar {
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (min-width: 660px) {
+    .img_navbar {
+        width: 50%;
+    }
+}
