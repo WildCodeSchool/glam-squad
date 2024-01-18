@@ -26,4 +26,6 @@ class LoginController extends AbstractController
             'form' => $registerForm
         ]);
     }
+
+
 }
