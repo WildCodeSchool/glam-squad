@@ -26,9 +26,10 @@ class LorealRepository extends ServiceEntityRepository
 
         if (!empty($name)) {
             $result = $this->createQueryBuilder('l')
-                ->andWhere('l.name LIKE :name')
+                ->andWhere('l.nameProduct LIKE :name')
                 ->setParameter('name', '%' . $name . '%')
-                ->orderBy('l.name', 'ASC')
+                ->orderBy('l.nameProduct', 'ASC')
+                ->setMaxResults(5)
                 ->getQuery()
                 ->getResult();
         }
