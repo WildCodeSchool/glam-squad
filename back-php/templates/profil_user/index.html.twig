@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <h2 class="comemonh2">VOTRE PROFIL</h2>
+    <h2 class="comemonh2">MON PROFIL</h2>
 
     <div class="comemaline"></div>
 
@@ -24,9 +24,10 @@
 <div class="come_mes_info">
     <h2>VOS INFORMATIONS</h2>
 
-       <p> {{ app.user.firstname|upper }} {{ app.user.lastname|upper }} </p>
-        <p>{{ app.user.email|upper }}</p>
-        <p>{{ app.user.town|upper }}</p>
+            <p>{{ app.user.firstname|upper }} {{ app.user.lastname|upper }} </p>
+            <p>{{ app.user.email|upper }}</p>
+            <p>{{ app.user.town|upper }}</p>
+            <button class="comebutton" href="#">MODIFIER MON PROFIL</button>
 </div>
 {% endblock %}
 

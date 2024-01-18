@@ -12,7 +12,7 @@
     flex-shrink: 0;
 }
 
-button {
+.autoplay>button {
     display: none;
     background-color: white;
     color: white;
@@ -29,14 +29,48 @@ button {
     flex-shrink: 0;
 }
 
+.come_mes_info>h2 {
+   text-align: center;
+    padding: 15px;
+}
+
+.come_mes_info>p {
+    text-align: start;
+}
+
+.comebutton{
+    background-color: black;
+    color: white;
+    width: 8rem;
+    height: 3rem;
+}
+
+
 .come_mes_info{
-    display: flex;
+    /*display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center;*/
     padding: 10px;
-    margin-right: 10%;
-    margin-left: 10%;
-    background-color: #E1E1E1;
-    align-items: center;
+    background-color: #F8F6F6;
+    /*align-items: center;*/
+    margin-bottom: 15px;
+}
+
+
+@media screen and (min-width: 768px) {
+    .comemesphoto>img {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .come_mes_info>p {
+        text-align: center;
+    }
+
+    .comebutton{
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 

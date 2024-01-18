@@ -8,10 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/profil', name: 'app_')]
+#[Route('/profile', name: 'app_')]
 class ProfilUserController extends AbstractController
 {
-    #[Route('/', name: 'user')]
+    #[Route('/', name: 'profile')]
     public function index(EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
