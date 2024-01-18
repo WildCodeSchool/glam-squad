@@ -56,7 +56,7 @@ class ImportLorealService
 
         $product->setBrand($arrayProduct['brand'])
             ->setCategory($arrayProduct['category'])
-            ->setName($arrayProduct['name'])
+            ->setNameProduct($arrayProduct['name'])
             ->setDataAchat($arrayProduct['date_achat'])
             ->setContenanceTotale($arrayProduct['contenance_totale'])
             ->setUniteProduct($arrayProduct['unite_product'])
