@@ -8,7 +8,7 @@ services:
     environment:
       DATABASE_URL: mysql://${USER_NAME}:${USER_PASSWORD}@${DATABASE_SUBDOMAIN_NAME}-db:3306/${DB_NAME}?serverVersion=8&charset=utf8mb4
     build: ./back-php
-    container_name: ${PROJECT_NAME:-project}-php
+    container_name: ${PROJECT_NAME}-php
     volumes:
       - ./public/uploads:/app/public/uploads
     restart: always
@@ -19,7 +19,7 @@ services:
 
       - "traefik.docker.network=proxy"
 
-      - "traefik.http.routers.${PROJECT_NAME}-php-secure.rule=Host(`${PROJECT_NAME}-php.${HOST}`)"
+      - "traefik.http.routers.${PROJECT_NAME}-php-secure.rule=Host(`api.${PROJECT_NAME}.${HOST}`)"
       - "traefik.http.routers.${PROJECT_NAME}-php-secure.entrypoints=websecure"
       - "traefik.http.routers.${PROJECT_NAME}-php-secure.service=svc_${PROJECT_NAME}-php"
 
@@ -46,17 +46,11 @@ services:
 
       - "traefik.docker.network=proxy"
 
-      - "traefik.http.routers.${PROJECT_NAME}-api-js-secure.rule=Host(`${PROJECT_NAME}-api-js.${HOST}`)"
-      - "traefik.http.routers.${PROJECT_NAME}-api-js-secure.entrypoints=websecure"
-      - "traefik.http.routers.${PROJECT_NAME}-api-js-secure.service=svc_${PROJECT_NAME}-api-js"
+      - "traefik.http.routers.${PROJECT_NAME}-js-secure.rule=Host(`${PROJECT_NAME}.${HOST}`)"
+      - "traefik.http.routers.${PROJECT_NAME}-js-secure.entrypoints=websecure"
+      - "traefik.http.routers.${PROJECT_NAME}-js-secure.service=svc_${PROJECT_NAME}-js"
 
-      - "traefik.http.services.svc_${PROJECT_NAME}-api-js.loadbalancer.server.port=3310"
-
-      - "traefik.http.routers.${PROJECT_NAME}-front-js-secure.rule=Host(`${PROJECT_NAME}-front-js.${HOST}`)"
-      - "traefik.http.routers.${PROJECT_NAME}-front-js-secure.entrypoints=websecure"
-      - "traefik.http.routers.${PROJECT_NAME}-front-js-secure.service=svc_${PROJECT_NAME}-front-js"
-
-      - "traefik.http.services.svc_${PROJECT_NAME}-front-js.loadbalancer.server.port=5173"
+      - "traefik.http.services.svc_${PROJECT_NAME}-js.loadbalancer.server.port=3310"
 
 networks:
   proxy:
