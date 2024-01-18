@@ -10,7 +10,7 @@ services:
     build: ./back-php
     container_name: ${PROJECT_NAME:-project}-php
     volumes:
-      - ./back-php/public/uploads:/var/www/public/uploads
+      - ./public/uploads:/app/public/uploads
     restart: always
     networks:
       - proxy

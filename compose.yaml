@@ -43,7 +43,7 @@ services:
       DB_HOST: ${DATABASE_SUBDOMAIN_NAME:-database}
       DB_NAME: ${DB_NAME:-bordeaux_hackaton}
     volumes:
-        - ./back-php:/var/www
+        - ./back-php:/app
     ports:
       # HTTP
       - target: 80

@@ -2,10 +2,10 @@
 
 set -e
 
-mkdir -p /var/www/public/uploads
-chmod -R 777 /var/www/public/uploads
-mkdir -p /var/www/var
-chmod -R 777 /var/www/var
+mkdir -p /app/public/uploads
+chmod -R 777 /app/public/uploads
+mkdir -p /app/var
+chmod -R 777 /app/var
 
 if [ -z "$(ls -A 'vendor/' 2>/dev/null)" ]; then
   composer install --prefer-dist --no-progress --no-interaction
@@ -41,6 +41,9 @@ fi
 # run composer scripts like
 # assets:install public
 # ckeditor:install and so on
+
+yarn install
+yarn build
 
 ## server config
 php-fpm -D &

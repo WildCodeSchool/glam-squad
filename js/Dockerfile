@@ -12,9 +12,9 @@ RUN apk add --no-cache libc6-compat
 
 WORKDIR /srv/app
 
-COPY package.json .
-COPY backend/package.json backend/
-COPY frontend/package.json frontend/mdb-react-ui-kit.tgz frontend/plugins frontend/
+COPY package.* ./
+COPY backend/package.* backend/
+COPY frontend/package.* frontend/mdb-react-ui-kit.tgz frontend/plugins frontend/
 
 RUN npm install
 
