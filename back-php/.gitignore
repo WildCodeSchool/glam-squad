@@ -10,3 +10,4 @@ db.php
 /.env.local
 /.env.local.php
 /.env.*.local
+/public/build/

@@ -1,4 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
+@import "profil_user";
+//start coding by removing this file and adding yours ;)
+//@import "wcs";
+
 
 main{
     color: black;
@@ -24,6 +28,11 @@ footer {
 .footer-menu {
     grid-area: 1 / 2 / 2 / 3;
     margin: 8px;
+}
+
+.footer-menu {
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-link {
@@ -401,5 +410,4 @@ button.btn.btn-outline.div2 {
     .img_navbar {
         width: 40%;
     }
-
 }

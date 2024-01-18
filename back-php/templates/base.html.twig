@@ -4,8 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/png" href="{{ asset('build/images/logo-wild-code-school.svg') }}"/>
+
+        {#<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>#}
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
         <title>
-            {% block title %}Projet 3 Name{% endblock %}
+            {% block title %}Consumer Prediction{% endblock %}
         </title>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -19,7 +24,15 @@
     <body>
     {% include 'components/_navbar.html.twig' %}
         {% block body %}{% endblock %}
+<<<<<<< HEAD
 {#    {% include 'components/_footer.html.twig' %}#}
+=======
+    {% block script %}
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    {% endblock %}
+>>>>>>> cbadc0b882a098a28c3329f17dbe4c36b2bca0b1
     </body>
     <footer>
         {% include 'components/_footer.html.twig' %}
