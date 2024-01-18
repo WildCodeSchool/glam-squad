@@ -59,7 +59,7 @@ class ImportLorealService
 
         $product->setBrand($arrayProduct['brand'])
             ->setCategory($arrayProduct['category'])
-            ->setName($arrayProduct['name'])
+            ->setNameProduct($arrayProduct['name'])
             ->setDataAchat($arrayProduct['date_achat'])
             ->setContenanceTotale($arrayProduct['contenance_totale'])
             ->setUniteProduct($arrayProduct['unite_product'])
@@ -82,7 +82,7 @@ class ImportLorealService
 
         foreach ($products as $product) {
             $iop->progressAdvance();
-            $product->setSlug($this->slugger->slug($product->getName()));
+            $product->setSlug($this->slugger->slug($product->getNameProduct()));
             $this->erm->flush();
         }
     }

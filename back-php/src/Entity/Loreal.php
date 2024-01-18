@@ -21,7 +21,7 @@ class Loreal
     private ?string $category = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $nameProduct = null;
 
     #[ORM\Column(length: 255)]
     private ?string $dataAchat = null;
@@ -85,14 +85,14 @@ class Loreal
         return $this;
     }
 
-    public function getName(): ?string
+    public function getNameProduct(): ?string
     {
-        return $this->name;
+        return $this->nameProduct;
     }
 
-    public function setName(string $name): static
+    public function setNameProduct(string $nameProduct): static
     {
-        $this->name = $name;
+        $this->nameProduct = $nameProduct;
 
         return $this;
     }
