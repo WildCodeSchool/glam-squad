@@ -1,15 +1,93 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <div class="pink-stripe">
-        <h1>
-            Let's start coding&nbsp;&#129304;
-        </h1>
-    </div>
-    <div class="white-stripe">
-        <img src="{{ asset('build/images/logo-wild-code-school.svg') }}"
-             alt="">
-    </div>
+
+    <main>
+        <div>
+            <div>
+                <img class="pub" src="{{ asset('build/images/pub.jpg')}}" alt="pub" />
+            </div>
+            <div class="search">
+                <form class="w-50 parent" role="search">
+                    <input class="form-control me-2 div1" type="search" placeholder="Recherche" aria-label="Recherche">
+                    <button class="btn btn-outline div2 " type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            <div class="sideByside">
+                <div class="prediction">
+                    <a class="text-decoration-none linkPrediction" href="#">
+                        <div class="prediction-content">
+                            <img class="imagePrediction" src="{{ asset('build/images/imagePrediction.png')}}" alt="prediction image" />
+                            <p class="titrePrediction">PREDICTION
+    {#                        <span class="imagePrediction"></span>#}
+                            <span class="trait1"></span>
+                            <span class="trait2"></span>
+                            <span class="trait3"></span>
+                            </p>
+                       </div>
+                    </a>
+                </div>
+
+                <div class="mesProduits">
+                    <div class="traitVerti1"></div>
+                    <div>
+                        <p class="litleTitle">MES PRODUITS</p>
+                        <div class="staggered">
+                            <div class="stag1">la</div>
+                            <div class="stag2">la</div>
+                            <div class="stag3">la</div>
+                            <div class="stag4">la</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ventes">
+                    <div class="traitVerti1"></div>
+                    <div>
+                        <p class="litleTitle">MEILLEURS VENTES</p>
+                        <div class="staggered">
+                            <div class="stag1">la</div>
+                            <div class="stag2">la</div>
+                            <div class="stag3">la</div>
+                            <div class="stag4">la</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <img class="DRKadry" src="{{ asset('build/images/DRKadry.png')}}" alt="DR Kadry" />
+                <img class="banner" src="{{ asset('build/images/banner.jpg')}}" alt="banner" />
+            </div>
+            <span class="BestSellers">
+                <div class="traitVerti"></div>
+                <div class="textVerti">
+                    <div class="B">B</div>
+                    <div class="E">E</div>
+                    <div class="S">S</div>
+                    <div class="T">T</div>
+                    <div class="S2">S</div>
+                    <div class="E2">E</div>
+                    <div class="L">L</div>
+                    <div class="L2">L</div>
+                    <div class="E3">E</div>
+                    <div class="R">R</div>
+                    <div class="S3">S</div>
+                </div>
+
+                    <img class="gloss" src="{{ asset('build/images/gloss.png')}}" alt="image gloss " />
+            </span>
+            <div>
+                <img class="makup" src="{{ asset('build/images/makup.png')}}" alt="image makup" />
+            </div>
+        </div>
+
+
+    </main>
 {% endblock %}
+
+
