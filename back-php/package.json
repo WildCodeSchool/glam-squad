@@ -25,11 +25,8 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
-<<<<<<< HEAD
-=======
     },
     "dependencies": {
         "bootstrap": "^5.3.2"
->>>>>>> a1139732c0dbf47f48f024a9d41a35086bba67ee
     }
 }

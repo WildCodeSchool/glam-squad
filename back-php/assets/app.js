@@ -9,7 +9,10 @@ import './bootstrap.js';
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
 
+
 import logo  from './images/logo_ConsumerPrediction.png';
+
+require('bootstrap');
 
 let html;
 html = `<img src="${logo}" alt="logo">`;
