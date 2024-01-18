@@ -1,5 +1,4 @@
 {
-  "build/app.css": "http://localhost:8080/build/app.css",
   "build/app.js": "http://localhost:8080/build/app.js",
   "build/runtime.js": "http://localhost:8080/build/runtime.js",
   "build/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_0_0_0_0_port_-63f5df.js": "http://localhost:8080/build/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_0_0_0_0_port_-63f5df.js",
@@ -8,6 +7,7 @@
   "build/images/DRKadry.png": "http://localhost:8080/build/images/DRKadry.b258c682.png",
   "build/images/gloss.png": "http://localhost:8080/build/images/gloss.143d546f.png",
   "build/images/makup.png": "http://localhost:8080/build/images/makup.3a31da14.png",
+  "build/images/makupL.png": "http://localhost:8080/build/images/makupL.fd014d2b.png",
   "build/images/imagePrediction.png": "http://localhost:8080/build/images/imagePrediction.217d5eae.png",
   "build/images/pub.jpg": "http://localhost:8080/build/images/pub.c9cff6b0.jpg",
   "build/images/banner.jpg": "http://localhost:8080/build/images/banner.48c60dbd.jpg",
@@ -15,4 +15,5 @@
   "build/images/logo-wild-code-school.svg": "http://localhost:8080/build/images/logo-wild-code-school.148bd128.svg",
   "build/app.png": "http://localhost:8080/build/images/makupL.fd014d2b.png",
   "build/images/makupL.png": "http://localhost:8080/build/images/makupL.fd014d2b.png"
+  "build/app.css": "http://localhost:8080/build/app.css"
 }
