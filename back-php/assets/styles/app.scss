@@ -233,6 +233,10 @@ button.btn.btn-outline.div2 {
 .stag3 { grid-area: 5 / 1 / 8 / 2; }
 .stag4 { grid-area: 7 / 2 / 10 / 3; }
 
+.stag{
+    width: 50%;
+}
+
 .DRKadry{
     width: 100%;
 }
@@ -343,6 +347,10 @@ button.btn.btn-outline.div2 {
         width: 50%;
     }
 
+    .stag{
+        width: 50%;
+    }
+
     .gloss {
         width: 50%;
     }
@@ -417,7 +425,6 @@ button.btn.btn-outline.div2 {
     }
 
 }
-
 
     .img_navbar {
         width: 40%;
