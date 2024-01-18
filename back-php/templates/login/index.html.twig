@@ -1,22 +1,300 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LoginController!{% endblock %}
+{% block title %}Connexion | Inscription{% endblock %}
+
+
 
 {% block body %}
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form action="{{ path('app_login') }}" method="post">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}">
+{#    <form action="{{ path('app_login') }}" method="post">#}
+{#        <label for="username">Email:</label>#}
+{#        <input type="text" id="username" name="_username" value="{{ last_username }}">#}
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password">
+{#        <label for="password">Password:</label>#}
+{#        <input type="password" id="password" name="_password">#}
 
-        {# If you want to control the URL the user is redirected to on success
-        <input type="hidden" name="_target_path" value="/account"> #}
+{#        #}{# If you want to control the URL the user is redirected to on success#}
+{#        <input type="hidden" name="_target_path" value="/account"> #}
 
-        <button type="submit">login</button>
-    </form>
+{#        <button type="submit">login</button>#}
+{#    </form>#}
+
+{#<form action="{{ path('app_login') }}" method="post">#}
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">CONNEXION</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">INSCRIPTION</label>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <form method="post" action="{{ path('app_login') }}">
+                        {# SE CONNECTER#}
+                        <div class="group">
+                            <br><label for="username" class="label">Adresse E-mail</label><br>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="input" placeholder="Adresse e-mail">
+                        </div>
+                        <div class="group">
+
+                            <br> <label for="password" class="label">Mot de passe</label><br>
+                            <input type="password" id="password" name="_password" class="input" data-type="password" placeholder="Mot de passe">
+                        </div>
+                        <div class="group">
+                            <input id="check" type="checkbox" class="check" checked>
+                            <label for="check"><span class="icon"></span> Se souvenir de moi</label>
+                        </div>
+
+                        <div class="group">
+                            <button type="submit" class="button" value="Sign In">Se connecter</button>
+                        {#  <div class="hr">#}
+                        </div>
+                        <div class="foot-lnk">
+                            <a href="#forgot">Mot de passe oublié</a>
+                        </div>
+                    </form>
+                </div>
+
+
+                {#   INSCRIPTION#}
+              {#   <div>
+                {{ form_errors(registrationForm) }}
+
+                {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+                {{ form_row(registrationForm.agreeTerms) }}
+
+                <button type="submit" class="btn">Register</button>
+                {{ form_end(registrationForm) }}
+                </div>#}
+
+                {{ form_start(form,  {'action': path('app_register'), 'method': 'POST'}) }}
+                <div class="sign-up-htm">
+                    <div class="group">
+{#                        <br><label for="lastname" class="label">Nom</label>#}
+{#                        <input id="user" type="text" class="input" placeholder="Entrez votre nom">#}
+                        {{ form_label(form.lastname, 'Nom', {
+                            'label_attr': {'class': 'label'}
+                        }) }}
+                        {{ form_widget(form.lastname,) }}
+{#                        {{ form_row(form.lastname) }}#}
+
+                    </div>
+                    <div class="group">
+                        {{ form_label(form.firstname, 'Prénom', {
+                            'label_attr': {'class': 'label'}
+                        }) }}
+                        {{ form_widget(form.firstname) }}
+{#                        <br><label for="firstname" class="label">Prénom</label>#}
+{#                        <input id="user" type="text" class="input" placeholder="Entrez votre prénom">#}
+                    </div>
+                    <div class="group">
+                        {{ form_label(form.plainPassword, 'Mot de passe', {
+                            'label_attr': {'class': 'label'}
+                        }) }}
+                        {{ form_widget(form.plainPassword) }}
+{#                        <br><label for="password" class="label">Mot de passe</label>#}
+{#                        <input type="password" id="password" name="_password" class="input" data-type="password" placeholder="Entrez votre mot de passe">#}
+                    </div>
+                    <div class="group">
+                        {{ form_label(form.email, 'Adresse e-mail', {
+                            'label_attr': {'class': 'label'}
+                        }) }}
+                        {{ form_widget(form.email) }}
+{#                        <br> <label for="username" class="label">Adresse email</label>#}
+{#                        <input type="text" id="username" name="_username" value="{{ last_username }}" class="input" placeholder="Entrez votre adresse e-mail">#}
+                    </div>
+                    <div class="group">
+                        {{ form_label(form.town, 'Ville', {
+                            'label_attr': {'class': 'label'}
+                        }) }}
+                        {{ form_widget(form.town) }}
+{#                        <label for="town" class="label">Ville</label>#}
+{#                        <input id="pass" type="text" class="input" placeholder="Entrez votre ville">#}
+                    </div>
+                    <div class="group">
+{#                            <label for="check"><span class="icon"></span> Se souvenir de moi</label>#}
+                        {{ form_label(form.agreeTerms, 'Acceptez les CG', {
+                            'label_attr': {'class': 'icon'}
+                        }) }}
+                        {{ form_widget(form.agreeTerms) }}
+                    </div>
+                    <div class="group">
+                        <button type="submit" class="button" value="Sign Up">S'inscrire</button>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk"><a for="tab-1" href="{{ path('app_login') }}">Vous avez déjà un compte?</a>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    <style>
+
+
+        body{
+            margin:0;
+            color: #020202; /*couleur texte INSCRIPTION & Mot de passe oublié*/
+            background: #ffffff;
+            font:600 16px/18px 'Open Sans',sans-serif;
+        }
+        *,:after,:before{box-sizing:border-box}
+        .clearfix:after,.clearfix:before{content:'';display:table}
+        .clearfix:after{clear:both;display:block}
+        a{color:inherit;text-decoration:none}
+
+        .login-wrap{
+            width:100%;
+            height: 40rem;
+            margin:auto;
+            max-width:525px;
+            min-height:700px;
+            position:relative;
+            background-color: #ffffff; /*traits au dessus du formulaire*/
+            box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+        }
+        .login-html{
+            width:100%;
+            height:100%;
+            position:absolute;
+            padding:90px 70px 50px 70px;
+            background-color: #F8F6F6; /*fond du formulaire   */
+        }
+        .login-html .sign-in-htm,
+        .login-html .sign-up-htm{
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            position:absolute;
+            transform:rotateY(180deg);
+            backface-visibility:hidden;
+            transition:all .4s linear;
+        }
+        .login-html .sign-in,
+        .login-html .sign-up,
+        .login-form .group .check{
+            display:none;
+        }
+        .login-html .tab,
+        .login-form .group .label,
+        .login-form .group .button{
+            text-transform:uppercase;
+        }
+        .login-html .tab{
+            font-size:17px;
+            margin-right:15px;
+            padding-bottom:5px;
+            margin:0 15px 10px 0;
+            display:inline-block;
+            border-bottom:3px solid transparent; /*trait sous CONNEXION ou INSCRIPTION*/
+        }
+        .login-html .sign-in:checked + .tab,
+        .login-html .sign-up:checked + .tab{
+            color: #020202; /*couleur texte CONNEXION & INSCRIPTION quand ils sont sélectionné*/
+            border-color: #020202;
+        }
+        .login-form{
+            min-height:345px;
+            position:relative;
+            perspective:1000px;
+            transform-style:preserve-3d;
+        }
+        .login-form .group{
+            margin-bottom:15px;
+        }
+        .login-form .group .label,
+        .login-form .group .input,
+        .login-form .group .button{
+            width:100%;
+            color: #020202; /*couleur texte*/
+            display:block;
+        }
+        .login-form .group .input,
+        .login-form .group .button{
+            border:none;
+            padding:15px 20px;
+            border: black;
+            /*border-radius:25px;*/
+            background: rgb(255, 255, 255); /*couleur intérieure des cases*/
+        }
+        .login-form .group input[data-type="password"]{
+            text-security:circle;
+            -webkit-text-security:circle;
+        }
+        .login-form .group .label{
+            color: rgb(0, 0, 0); /*couleur des titres des labels*/
+            font-size:16px;
+        }
+        .login-form .group .button{
+            background: #ffffff; /*couleur des boutons*/
+        }
+        .login-form .group label .icon{
+            width:15px;
+            height:15px;
+            /*border-radius:2px;*/
+            position:relative;
+            display:inline-block;
+            background:#F8F6F6;
+        }
+
+        .login-form .group label .icon:before,
+        .login-form .group label .icon:after{
+            content:'';
+            width:10px;
+            height:2px;
+            background: #ffffff; /*couleur du check*/
+            position:absolute;
+            transition:all .2s ease-in-out 0s;
+        }
+        .login-form .group label .icon:before{
+            left:3px;
+            width:5px;
+            bottom:6px;
+            transform:scale(0) rotate(0);
+        }
+        .login-form .group label .icon:after{
+            top:6px;
+            right:0;
+            transform:scale(0) rotate(0);
+        }
+        .login-form .group .check:checked + label{
+            color: #020202; /*    Texte : Se souvenir de moi*/
+        }
+        .login-form .group .check:checked + label .icon{
+            background: #020202;
+        }
+        .login-form .group .check:checked + label .icon:before{
+            transform:scale(1) rotate(45deg);
+        }
+        .login-form .group .check:checked + label .icon:after{
+            transform:scale(1) rotate(-45deg);
+        }
+        .login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
+            transform:rotate(0);
+        }
+        .login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
+            transform:rotate(0);
+        }
+
+        .hr{
+            height:2px;
+            margin:60px 0 50px 0;
+            background: rgb(2, 2, 2); /*couleur du trait en bas de page*/
+        }
+        .foot-lnk{
+            text-align:center;
+        }
+
+
+    </style>
+
+
 {% endblock %}
+
+

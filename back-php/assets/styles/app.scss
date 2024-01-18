@@ -1,4 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
+@import "profil_user";
+//start coding by removing this file and adding yours ;)
+//@import "wcs";
+
 
 main{
     color: black;
@@ -12,13 +16,13 @@ main{
     display: flex;
     justify-content: space-between;
 
+
+
 }
 
 .footer-menu {
     display: flex;
     flex-direction: column;
-
-}
 
 .footer-link {
     color: black;
