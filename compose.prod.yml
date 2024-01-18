@@ -23,7 +23,7 @@ services:
       - "traefik.http.routers.${PROJECT_NAME}-php-secure.entrypoints=websecure"
       - "traefik.http.routers.${PROJECT_NAME}-php-secure.service=svc_${PROJECT_NAME}-php"
 
-      - "traefik.http.services.svc_${PROJECT_NAME}-php.loadbalancer.server.port=3310"
+      - "traefik.http.services.svc_${PROJECT_NAME}-php.loadbalancer.server.port=8000"
 
   js:
     build: ./js
