@@ -1,0 +1,42 @@
+.comemonh2 {
+    text-align: center;
+}
+
+.comemonp {
+    text-align: center;
+}
+
+.comemesphoto>img {
+    width: 4.1875rem;
+    height: 4.1875rem;
+    flex-shrink: 0;
+}
+
+button {
+    display: none;
+    background-color: white;
+    color: white;
+    border: white;
+}
+
+.comemaline {
+    margin-right: auto;
+    margin-left: auto;
+    background: #000;
+    width: 0.15969rem;
+    height: 5.4375rem;
+    transform: rotate(-89.766deg);
+    flex-shrink: 0;
+}
+
+.come_mes_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    margin-right: 10%;
+    margin-left: 10%;
+    background-color: #E1E1E1;
+    align-items: center;
+}
+
