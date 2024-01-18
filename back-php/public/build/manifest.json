@@ -1,8 +1,26 @@
 {
+
   "build/app.css": "/build/app.f8b82258.css",
   "build/app.js": "/build/app.2d9a8186.js",
   "build/runtime.js": "/build/runtime.188fa053.js",
   "build/811.eb78b231.js": "/build/811.eb78b231.js",
   "build/images/logo_ConsumerPrediction.png": "/build/images/logo_ConsumerPrediction.e066bb05.png",
   "build/images/logo-wild-code-school.svg": "/build/images/logo-wild-code-school.148bd128.svg"
+  "build/app.css": "http://localhost:8080/build/app.css",
+  "build/app.js": "http://localhost:8080/build/app.js",
+  "build/runtime.js": "http://localhost:8080/build/runtime.js",
+  "build/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_0_0_0_0_port_-63f5df.js": "http://localhost:8080/build/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_0_0_0_0_port_-63f5df.js",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-802647.css": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-802647.css",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-802647.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-802647.js",
+  "build/images/logo_ConsumerPrediction.png": "http://localhost:8080/build/images/logo_ConsumerPrediction.e066bb05.png",
+  "build/images/logo-wild-code-school.svg": "http://localhost:8080/build/images/logo-wild-code-school.148bd128.svg",
+  "build/images/pub.jpg": "http://localhost:8080/build/images/pub.c9cff6b0.jpg",
+  "build/app.jpg": "http://localhost:8080/build/images/banner.48c60dbd.jpg",
+  "build/images/imagePrediction.png": "http://localhost:8080/build/images/imagePrediction.217d5eae.png",
+  "build/app.png": "http://localhost:8080/build/images/gloss.143d546f.png",
+  "build/images/DRKadry.png": "http://localhost:8080/build/images/DRKadry.b258c682.png",
+  "build/images/makup.png": "http://localhost:8080/build/images/makup.3a31da14.png",
+  "build/images/gloss.png": "http://localhost:8080/build/images/gloss.143d546f.png",
+  "build/images/banner.jpg": "http://localhost:8080/build/images/banner.48c60dbd.jpg"
+
 }
