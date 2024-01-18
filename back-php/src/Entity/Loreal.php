@@ -53,6 +53,9 @@ class Loreal
     #[ORM\Column(type: Types::TEXT)]
     private ?string $websiteUrl = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -210,6 +213,18 @@ class Loreal
     public function setWebsiteUrl(string $websiteUrl): static
     {
         $this->websiteUrl = $websiteUrl;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }
