@@ -2,7 +2,9 @@ version: '3.4'
 
 services:
   php:
-    build: ./back-php
+    build:
+      context: ./back-php
+      target: phpserver
     container_name: ${PROJECT_NAME}-php
     env_file:
       - ./back-php/.env
