@@ -11,10 +11,12 @@ import './styles/app.scss';
 
 
 import logo  from './images/logo_ConsumerPrediction.png';
+import imageMannequin  from './images/mannequin.png';
 
 require('bootstrap');
 
 let html;
 html = `<img src="${logo}" alt="logo">`;
+html = `<img src="${imageMannequin}" alt="imageMannequin">`;
 
 
