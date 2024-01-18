@@ -1,4 +1,4 @@
-# Project 3 - Starter Kit - Symfony
+yarn # Project 3 - Starter Kit - Symfony
 
 ## Change Log
 See [CHANGELOG.md](CHANGELOG.md) for more information.
