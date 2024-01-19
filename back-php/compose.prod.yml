@@ -4,7 +4,7 @@ services:
   web:
     env_file:
       - .env
-      - ../envs/.env-${GITHUB_REPOSITORY_NAME}
+      - ../../envs/.env-${GITHUB_REPOSITORY_NAME}
     environment:
       DATABASE_URL: mysql://${USER_NAME}:${USER_PASSWORD}@${DATABASE_SUBDOMAIN_NAME}-db:3306/${DB_NAME}?serverVersion=8&charset=utf8mb4
     build:
