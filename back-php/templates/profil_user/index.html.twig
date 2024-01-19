@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Votre Profil {% endblock %}
+
+{% block body %}
+
+    <h2 class="comemonh2">MON PROFIL</h2>
+
+    <div class="comemaline"></div>
+
+    <p class="comemonp">MES PRODUITS</p>
+
+    <div class="autoplay">
+        <div class="comemesphoto"><img src="https://www.loreal-paris.fr/dw/image/v2/BHHX_PRD/on/demandware.static/-/Sites-lorealparis-fr-catalog/default/dwfae958d4/ProductImages/OAP7229/3600524069827/3600524069827_1.jpg?sw=540&sfrm=jpg&q=70"></div>
+        <div class="comemesphoto"><img src="https://www.loreal-paris.fr/dw/image/v2/BHHX_PRD/on/demandware.static/-/Sites-lorealparis-fr-catalog/default/dw503aa0e5/ProductImages/OAP7161/3600524012632/3600524012632_1_v2.jpg?sw=540&sfrm=jpg&q=70"></div>
+        <div class="comemesphoto"><img src="https://www.loreal-paris.fr/dw/image/v2/BHHX_PRD/on/demandware.static/-/Sites-lorealparis-fr-catalog/default/dwb79999fe/ProductImages/OAP7043/3600523873821/3600523873821_1.jpg?sw=540&sfrm=jpg&q=70"></div>
+        <div class="comemesphoto"><img src="https://www.loreal-paris.fr/dw/image/v2/BHHX_PRD/on/demandware.static/-/Sites-lorealparis-fr-catalog/default/dw966d85d9/ProductImages/OAP6708/3600523456178/3600523456178_1.jpg?sw=540&sfrm=jpg&q=70"></div>
+        <div class="comemesphoto"><img src="https://www.loreal-paris.fr/dw/image/v2/BHHX_PRD/on/demandware.static/-/Sites-lorealparis-fr-catalog/default/dw7a98ba26/ProductImages/OAP7165/3600523990269/3600523990269_1.jpg?sw=740&sfrm=png&q=70"></div>
+    </div>
+
+
+    <div class="comemaline"></div>
+
+<div class="come_mes_info">
+    <h2>VOS INFORMATIONS</h2>
+
+            <p>{{ app.user.firstname|upper }} {{ app.user.lastname|upper }} </p>
+            <p>{{ app.user.email|upper }}</p>
+            <p>{{ app.user.town|upper }}</p>
+            <button class="comebutton" href="#">MODIFIER MON PROFIL</button>
+</div>
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.autoplay').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+        })
+    </script>
+{% endblock %}
