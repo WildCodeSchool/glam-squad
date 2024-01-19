@@ -15,7 +15,7 @@ class HomeController extends AbstractController
     public function index(
         LorealRepository $lorealRepository,
     ): Response {
-        $id =[1, 306, 457, 462];
+        $id = [1, 306, 457, 462];
 
         $loreal1 = $lorealRepository->findOneBy(['id' => $id[0]]);
         $loreal2 = $lorealRepository->findOneBy(['id' => $id[1]]);
@@ -25,9 +25,8 @@ class HomeController extends AbstractController
 //        $lorealList = $lorealRepository->findBy(['id' => $id]);
 
 //        if(!$lorealList){
-        if(!$loreal1 && !$loreal2 && !$loreal3 && !$loreal4){
-            throw $this->createNotFoundException(
-              'pas d\'image associé à cette id');
+        if (!$loreal1 && !$loreal2 && !$loreal3 && !$loreal4) {
+            throw $this->createNotFoundException('pas d\'image associé à cette id');
         }
 
 //        $picturePath = $lorealList->getImgUrl();
