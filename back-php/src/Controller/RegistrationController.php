@@ -88,7 +88,7 @@ class RegistrationController extends AbstractController
         return $this->redirectToRoute('app_register');
     }
 
-     #[Route('/login', name: 'app_login')]
+    #[Route('/login', name: 'app_login')]
     public function index(AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -100,8 +100,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/logout', name: 'app_logout')]
-    public function logout(AuthenticationUtils $authenticationUtils): RedirectResponse
+    public function logout(): void
     {
-        return $this->redirectToRoute('app_logout');
     }
 }
