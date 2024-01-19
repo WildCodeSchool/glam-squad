@@ -30,3 +30,7 @@ les pistes d’améliorations
 
 
 
+App JS: [lien](https://{{repository.name}}.laloupe-1.wilders.dev)
+App PHP: [lien](https://api.{{repository.name}}.laloupe-1.wilders.dev)
+App PYTHON STREAMLIT: [lien](https://data-streamlit.api.{{repository.name}}.laloupe-1.wilders.dev)
+App PYTHON FLASK: [lien](https://data-flask.api.{{repository.name}}.laloupe-1.wilders.dev)
