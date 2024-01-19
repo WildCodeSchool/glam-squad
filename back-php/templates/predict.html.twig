@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="prediction-container">
+        <h1 class="prediction-title">PREDICTION</h1>
+
+        {% if product is defined %}
+            <div class="product-display">
+                <img src="{{ product.imgUrl }}" alt="{{ product.nameProduct }}" class="product-image">
+                <p class="product-description">{{ product.nameProduct }}</p>
+                <p> Fin prévue : {{ product.dateFinProduct }}</p>
+            </div>
+        {% endif %}
+
+        <div class="frequency-question">
+            {{ component('Search') }}
+        </div>
+    </div>
+{% endblock %}

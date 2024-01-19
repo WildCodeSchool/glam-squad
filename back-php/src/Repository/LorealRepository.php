@@ -20,7 +20,21 @@ class LorealRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Loreal::class);
     }
+    public function findLikeName(string $name): array
+    {
+        $result = [];
 
+        if (!empty($name)) {
+            $result = $this->createQueryBuilder('l')
+                ->andWhere('l.nameProduct LIKE :name')
+                ->setParameter('name', '%' . $name . '%')
+                ->orderBy('l.nameProduct', 'ASC')
+                ->setMaxResults(5)
+                ->getQuery()
+                ->getResult();
+        }
+        return $result;
+    }
 //    /**
 //     * @return Loreal[] Returns an array of Loreal objects
 //     */
