@@ -110,6 +110,8 @@ div.menu-item {
     font-weight: 400;
     line-height: normal;
     letter-spacing: 4.25px;
+    margin-top: 2%;
+    margin-left: 2%;
     /* D'autres propriétés de style comme la taille de la police, le poids, etc. */
 }
 
@@ -122,11 +124,16 @@ div.menu-item {
     font-weight: 400;
     line-height: normal;
     letter-spacing: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /* D'autres propriétés de style si nécessaire */
 }
 
 .product-image {
-    width: 100%; /* ou toute autre taille appropriée */
+    width: 30%;
+    margin-bottom: 20px;
+    /* ou toute autre taille appropriée */
     /* D'autres propriétés de style pour ajuster l'image */
 }
 
@@ -134,7 +141,7 @@ div.menu-item {
     text-align: right;
     color: #000;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px;
+    font-size: 10px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -511,6 +518,14 @@ button.btn.btn-outline.div2 {
     .bi-person-fill{
         width: 50px;
         height: 50px;
+    }
+
+    .product-description{
+        font-size: 22px;
+    }
+
+    .prediction-title{
+        font-size: 30px;
     }
 
 }

@@ -8,7 +8,7 @@
             <div class="product-display">
                 <img src="{{ product.imgUrl }}" alt="{{ product.nameProduct }}" class="product-image">
                 <p class="product-description">{{ product.nameProduct }}</p>
-                <p> Fin prévue : {{ product.dateFinProduct }}</p>
+                <p class="product-description"> Fin prévue : {{ product.dateFinProduct|date('d F Y') }}</p>
             </div>
         {% endif %}
 

@@ -14,5 +14,8 @@
   "build/images/pub.jpg": "http://localhost:8080/build/images/pub.c9cff6b0.jpg",
   "build/images/banner.jpg": "http://localhost:8080/build/images/banner.48c60dbd.jpg",
   "build/images/logo_ConsumerPrediction.png": "http://localhost:8080/build/images/logo_ConsumerPrediction.e066bb05.png",
-  "build/images/logo-wild-code-school.svg": "http://localhost:8080/build/images/logo-wild-code-school.148bd128.svg"
+  "build/images/logo-wild-code-school.svg": "http://localhost:8080/build/images/logo-wild-code-school.148bd128.svg",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-autocomple-acc701.css": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-autocomple-acc701.css",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-autocomple-acc701.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-autocomple-acc701.js",
+  "build/app.png": "http://localhost:8080/build/images/mannequin.b7d39ef9.png"
 }
