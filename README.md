@@ -29,8 +29,11 @@ votre prototype/MVP/dashboard, etc…
 les pistes d’améliorations
 
 
+** **
+###Liens des applications :  
+_Vous devez remplacer les **{{repository.name}}** avec le nom de votre repo._  
 
-App JS: [lien](https://{{repository.name}}.laloupe-1.wilders.dev)
-App PHP: [lien](https://api.{{repository.name}}.laloupe-1.wilders.dev)
-App PYTHON STREAMLIT: [lien](https://data-streamlit.api.{{repository.name}}.laloupe-1.wilders.dev)
-App PYTHON FLASK: [lien](https://data-flask.api.{{repository.name}}.laloupe-1.wilders.dev)
+**App JS:** https://{{repository.name}}.laloupe-1.wilders.dev  
+**App PHP:** https://api.{{repository.name}}.laloupe-1.wilders.dev  
+**App PYTHON STREAMLIT:** https://data-streamlit.api.{{repository.name}}.laloupe-1.wilders.dev  
+**App PYTHON FLASK:** https://data-flask.api.{{repository.name}}.laloupe-1.wilders.dev
