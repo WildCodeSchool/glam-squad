@@ -18,12 +18,11 @@ services:
       - proxy
     labels:
       - "traefik.enable=true"
-
       - "traefik.docker.network=proxy"
-
       - "traefik.http.routers.${PROJECT_NAME}-php-secure.rule=Host(`api.${PROJECT_NAME}.${HOST}`)"
       - "traefik.http.routers.${PROJECT_NAME}-php-secure.entrypoints=websecure"
       - "traefik.http.routers.${PROJECT_NAME}-php-secure.service=svc_${PROJECT_NAME}-php"
+      - "traefik.http.services.svc_${PROJECT_NAME}-php.loadbalancer.server.port=80"
 
   js:
     build: ./js
@@ -43,14 +42,41 @@ services:
       - proxy
     labels:
       - "traefik.enable=true"
-
       - "traefik.docker.network=proxy"
-
       - "traefik.http.routers.${PROJECT_NAME}-js-secure.rule=Host(`${PROJECT_NAME}.${HOST}`)"
       - "traefik.http.routers.${PROJECT_NAME}-js-secure.entrypoints=websecure"
       - "traefik.http.routers.${PROJECT_NAME}-js-secure.service=svc_${PROJECT_NAME}-js"
-
       - "traefik.http.services.svc_${PROJECT_NAME}-js.loadbalancer.server.port=3310"
+
+  data:
+    build: ./data-python
+    container_name: ${PROJECT_NAME}-data
+    env_file:
+      - ../envs/.env-${GITHUB_REPOSITORY_NAME}
+    environment:
+      API_URL: "https://api.${PROJECT_NAME}.${HOST}"
+      APP_SECRET: ${APP_SECRET:-123456789}
+      FRONTEND_URL: "https://${PROJECT_NAME}.${HOST}"
+      DB_HOST: ${DATABASE_SUBDOMAIN_NAME}-db
+      DB_PORT: 3306
+      DB_USER: ${USER_NAME}
+      DB_PASSWORD: ${USER_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+
+      - "traefik.http.routers.${PROJECT_NAME}-data-streamlit-secure.rule=Host(`data-streamlit.api.${PROJECT_NAME}.${HOST}`)"
+      - "traefik.http.routers.${PROJECT_NAME}-data-streamlit-secure.entrypoints=websecure"
+      - "traefik.http.routers.${PROJECT_NAME}-data-streamlit-secure.service=svc_${PROJECT_NAME}-data-streamlit"
+      - "traefik.http.services.svc_${PROJECT_NAME}-data-streamlit.loadbalancer.server.port=8501"
+
+      - "traefik.http.routers.${PROJECT_NAME}-data-flask-secure.rule=Host(`data-flask.api.${PROJECT_NAME}.${HOST}`)"
+      - "traefik.http.routers.${PROJECT_NAME}-data-flask-secure.entrypoints=websecure"
+      - "traefik.http.routers.${PROJECT_NAME}-data-flask-secure.service=svc_${PROJECT_NAME}-data-flask"
+      - "traefik.http.services.svc_${PROJECT_NAME}-data-flask.loadbalancer.server.port=5000"
 
 networks:
   proxy:
