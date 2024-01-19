@@ -1,80 +1,73 @@
-#syntax=docker/dockerfile:1.4
-
-# Versions
-# hadolint ignore=DL3007
-FROM composer/composer:2-bin as composer_upstream
-FROM php:8-fpm-alpine as phpserver
-
+#
+# Prep App's PHP Dependencies
+#
+FROM composer/composer:2-bin as composer
+FROM composer:2.5.1 as vendor
 WORKDIR /app
 
-# persistent / runtime deps
-# hadolint ignore=DL3018
+COPY composer.json composer.json
+COPY composer.lock composer.lock
+RUN composer install --no-scripts
+
+#
+# Prep App's Frontend CSS & JS now
+# so some symfony UX dependencies can access to vendor
+#
+FROM node:18-alpine as node
+WORKDIR /app
+COPY --from=vendor /app/vendor vendor/
+COPY package.json package.json
+COPY yarn.lock yarn.lock
+COPY . .
+RUN yarn install
+RUN yarn build
+#RUN ls public
+
+FROM php:8.2-fpm-alpine as phpserver
+
+# add cli tools
+RUN apk update \
+    && apk upgrade \
+    && apk add nginx
+
 RUN apk add --no-cache \
-		acl \
-		file \
-		freetype \
-		freetype-dev \
-		gettext \
-		git \
-		icu-dev \
-		libjpeg-turbo \
-		libjpeg-turbo-dev \
-		libpng \
-		libpng-dev \
-		libxslt \
-		libzip-dev \
-		nginx \
-		nodejs \
-		npm \
-		yarn \
-		zip \
-	;
+    libzip-dev \
+    zip \
+    freetype \
+    libpng \
+    libjpeg-turbo \
+    freetype-dev \
+    libpng-dev \
+    libjpeg-turbo-dev \
+    && docker-php-ext-configure gd \
+    --with-freetype --with-jpeg \
+    && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
+    && docker-php-ext-install -j${NPROC} gd \
+    && apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev \
+    && docker-php-ext-install zip
 
-RUN set -eux; \
-	docker-php-ext-install \
-		bcmath \
-		pdo_mysql \
-		opcache \
-		zip \
-	;
+# silently install 'docker-php-ext-install' extensions
+RUN set -x
 
+RUN docker-php-ext-install pdo_mysql bcmath > /dev/null
+
+# Install INTL
+RUN apk add icu-dev
 RUN docker-php-ext-configure intl && docker-php-ext-install intl && docker-php-ext-enable intl
 
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-	&& NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
-	&& docker-php-ext-install -j${NPROC} gd \
-	&& apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
+COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY --link nginx.conf /etc/nginx/nginx.conf
-COPY --link php.ini /usr/local/etc/php/conf.d/local.ini
-COPY --link --chmod=755 docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+COPY php.ini /usr/local/etc/php/conf.d/local.ini
+RUN cat /usr/local/etc/php/conf.d/local.ini
 
-ENTRYPOINT ["docker-entrypoint"]
 
-# https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
-ENV COMPOSER_ALLOW_SUPERUSER=1
-ENV PATH="${PATH}:/root/.composer/vendor/bin"
-
-COPY --from=composer_upstream --link /composer /usr/bin/composer
-
-HEALTHCHECK --start-period=60s CMD curl -f http://localhost:2019/metrics || exit 1
-
-ENV APP_ENV=prod
-
-COPY --link composer.* symfony.* package.json yarn.lock ./
-RUN set -eux; \
-	composer install --no-cache --prefer-dist --no-dev --no-autoloader --no-scripts --no-progress \
-	&& yarn install \
-	;
-
-COPY --link . ./
-RUN yarn build
+WORKDIR /var/www
+COPY . /var/www/
+COPY --from=vendor /app/vendor /var/www/vendor
+COPY --from=composer /composer /usr/bin/composer
+COPY --from=node /app/public/build /var/www/public/build
 
 EXPOSE 80
 
-RUN set -eux; \
-	mkdir -p var/cache var/log; \
-	composer dump-autoload --classmap-authoritative --no-dev; \
-	composer dump-env prod; \
-	composer run-script --no-dev post-install-cmd; \
-	chmod +x bin/console; sync;
+COPY docker-entry.sh /etc/entrypoint.sh
+ENTRYPOINT ["sh", "/etc/entrypoint.sh"]
