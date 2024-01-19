@@ -95,6 +95,97 @@ div.menu-item {
     width: 50%;
 }
 
+.prediction-container {
+    width: 100%;
+    margin: auto;
+    background-color: #FFFFFF; /* ou toute autre couleur de fond appropriée */
+}
+
+.prediction-title {
+    text-align: left;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #000;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 4.25px;
+    margin-top: 2%;
+    margin-left: 2%;
+    /* D'autres propriétés de style comme la taille de la police, le poids, etc. */
+}
+
+.product-display {
+    text-align: right;
+    color: #000;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* D'autres propriétés de style si nécessaire */
+}
+
+.product-image {
+    width: 30%;
+    margin-bottom: 20px;
+    /* ou toute autre taille appropriée */
+    /* D'autres propriétés de style pour ajuster l'image */
+}
+
+.product-description {
+    text-align: right;
+    color: #000;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 3px;
+
+
+}
+
+.frequency-question {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    background-image: url('../images/mannequin.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+
+    .search-form {
+        width: 80%;
+        max-width: 500px;
+    }
+
+    .input-group {
+        display: flex;
+        width: 100%;
+    }
+
+    .form-control {
+        flex: 1; /* L'input prend tout l'espace disponible */
+    }
+
+    .btn-outline {
+        background-color: #fff;
+    }
+
+}
+
+@media (min-width: 490px) {
+    .frequency-question {
+        height: 100vh;
+    }
+}
 button.btn.btn-outline.div2 {
     display: flex;
     align-items: center;
@@ -424,13 +515,38 @@ button.btn.btn-outline.div2 {
         width: 40%;
     }
 
+    .bi-person-fill{
+        width: 50px;
+        height: 50px;
+    }
+
+    .product-description{
+        font-size: 22px;
+    }
+
+    .prediction-title{
+        font-size: 30px;
+    }
+
 }
 
-    .img_navbar {
-        width: 40%;
-    }
 
-    .img_navbar {
-        width: 40%;
-    }
+
+
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-title {
+    font-size: 1.1rem;
+}
+
+.btn-primary {
+    font-size: 0.9rem;
+}
+
+
+
+
 

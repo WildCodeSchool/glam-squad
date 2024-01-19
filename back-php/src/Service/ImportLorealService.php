@@ -9,6 +9,7 @@ use League\Csv\UnavailableStream;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use League\Csv\Statement;
 use League\Csv\Reader;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @throws UnavailableStream
@@ -18,6 +19,7 @@ class ImportLorealService
     public function __construct(
         private LorealRepository $lorealRepository,
         private EntityManagerInterface $erm,
+        private SluggerInterface $slugger
     ) {
     }
 
@@ -26,7 +28,7 @@ class ImportLorealService
         $iop->title('Importation des produits');
         $lorealProducts = $this->readCsvFile();
 
-        $iop->progressStart(count($lorealProducts));
+        $iop->progressStart(count($lorealProducts) * 2);
         foreach ($lorealProducts as $arrayProduct) {
             $iop->progressAdvance();
             $product = $this->createBrand($arrayProduct);
@@ -34,6 +36,7 @@ class ImportLorealService
         }
 
         $this->erm->flush();
+        $this->addSlug($iop);
         $iop->progressFinish();
         $iop->success("c'est bien chargé !");
     }
@@ -66,8 +69,21 @@ class ImportLorealService
             ->setDateFinProduct($arrayProduct['date_fin_product'])
             ->setDateFinString($arrayProduct['date_fin_string'])
             ->setImgUrl($arrayProduct['img_url'])
-            ->setWebsiteUrl($arrayProduct['website_url']);
+            ->setWebsiteUrl($arrayProduct['website_url'])
+           // ->setSlug($this->slugger->slug($arrayProduct['name']))
+        ;
 
         return $product;
+    }
+
+    private function addSlug(SymfonyStyle $iop): void
+    {
+        $products = $this->lorealRepository->findAll();
+
+        foreach ($products as $product) {
+            $iop->progressAdvance();
+            $product->setSlug($this->slugger->slug($product->getNameProduct()));
+            $this->erm->flush();
+        }
     }
 }
