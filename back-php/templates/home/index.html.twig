@@ -39,10 +39,17 @@
                     <div>
                         <p class="litleTitle">MES PRODUITS</p>
                         <div class="staggered">
-                            <div class="stag1">la</div>
-                            <div class="stag2">la</div>
-                            <div class="stag3">la</div>
-                            <div class="stag4">la</div>
+                            <div class="stag1"><img class="stag" src="{{ asset(loreal1.imgUrl) }}" alt="Image {{ loreal1.id }}"></div>
+                            <div class="stag2"><img class="stag" src="{{ asset(loreal2.imgUrl) }}" alt="Image {{ loreal2.id }}"></div>
+                            <div class="stag3"><img class="stag" src="{{ asset(loreal3.imgUrl) }}" alt="Image {{ loreal3.id }}"></div>
+                            <div class="stag4"><img class="stag" src="{{ asset(loreal4.imgUrl) }}" alt="Image {{ loreal4.id }}"></div>
+{#                            {%  if lorealList %}#}
+{#                                {% for loreal in lorealList %}#}
+{#                                    {% if loreal.id <= 4 %}#}
+{#                                        <img class="stag.{{ loreal.id }}" src="{{ asset(loreal.imgUrl) }}" alt="Image {{ loreal.id }}">#}
+{#                                    {% endif %}#}
+{#                                {% endfor %}#}
+{#                            {% endif %}#}
                         </div>
                     </div>
                 </div>
@@ -51,10 +58,17 @@
                     <div>
                         <p class="litleTitle">MEILLEURS VENTES</p>
                         <div class="staggered">
-                            <div class="stag1">la</div>
-                            <div class="stag2">la</div>
-                            <div class="stag3">la</div>
-                            <div class="stag4">la</div>
+                            <div class="stag1"><img class="stag" src="{{ asset(loreal4.imgUrl) }}" alt="Image {{ loreal4.id }}"></div>
+                            <div class="stag2"><img class="stag" src="{{ asset(loreal1.imgUrl) }}" alt="Image {{ loreal1.id }}"></div>
+                            <div class="stag3"><img class="stag" src="{{ asset(loreal2.imgUrl) }}" alt="Image {{ loreal2.id }}"></div>
+                            <div class="stag4"><img class="stag" src="{{ asset(loreal3.imgUrl) }}" alt="Image {{ loreal3.id }}"></div>
+{#                            {%  if lorealList %}#}
+{#                                {% for loreal in lorealList %}#}
+{#                                    {% if loreal.id <= 4 %}#}
+{#                                        <img class="stag.{{ loreal.id }}" src="{{ asset(loreal.imgUrl) }}" alt="Image {{ loreal.id }}">#}
+{#                                    {% endif %}#}
+{#                                {% endfor %}#}
+{#                            {% endif %}#}
                         </div>
                     </div>
                 </div>
